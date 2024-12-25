@@ -42,6 +42,10 @@ jobs:
           path: ${{ steps.go-cache-paths.outputs.go-build }}
           key: ${{ runner.os }}-go-build-${{ hashFiles('**/go.sum') }}
 
+      - name: Debug Find Command
+        run: |
+          find . -name "listing_${{ github.event.inputs.listing }}"
+
       - name: Run
         run: |
           cd "$(find . -name listing_${{ github.event.inputs.listing }})"
